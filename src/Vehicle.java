@@ -37,9 +37,14 @@ public class Vehicle{
 		heading = direction;
 	}
 	
+	/**
+	 * Copy constructor
+	 * @param v
+	 */
 	public Vehicle(Vehicle v) {
-		
+		this(v.getX(), v.getY(), v.getHeading());
 	}
+	
 	
 	/**
 	 * Gets the x position
@@ -55,6 +60,14 @@ public class Vehicle{
 	 */
 	public float getY() {
 		return yPosition;
+	}
+	
+	public void setX(int xPos) {
+		this.xPosition = xPos;
+	}
+	
+	public void setY(int yPos) {
+		this.yPosition = yPos;
 	}
 	
 	/**
@@ -189,10 +202,14 @@ public class Vehicle{
 	 * @return if the vehicles are colliding
 	 */
 	public Boolean equals(Vehicle v){
-		if(v.equals(v)){
-			return true;
-		}else
-			return false;
+		if (this.xPosition == v.xPosition) {
+			if (this.yPosition == v.yPosition) {
+				if (this.heading == v.heading) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	/**
